@@ -18,7 +18,7 @@ namespace BarberTech.Data.Configurations
 
             builder.Property(x => x.Documento)
                 .IsRequired(true)
-                .HasColumnType("NVARCHAR(11)");
+                .HasColumnType("VARCHAR(11)");
 
             builder.Property(x => x.Email)
                 .IsRequired(true)
@@ -26,7 +26,7 @@ namespace BarberTech.Data.Configurations
 
             builder.Property(x => x.Telefone)
                 .IsRequired(true)
-                .HasColumnType("NVARCHAR(11)");
+                .HasColumnType("VARCHAR(11)");
 
             builder.HasIndex(x => x.Documento)
                 .IsUnique();

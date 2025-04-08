@@ -55,6 +55,8 @@ namespace BarberTech.Components.Pages.Agendamentos
             HideButtons = !auth.User.IsInRole("Atendente");
 
             Agendamentos = await AgendamentoRepository.GetAllAsync();
+
+            Agendamentos = Agendamentos.OrderBy(x => x.Data).ThenBy(x => x.Horario).ToList();
         }
     }
 }

@@ -15,7 +15,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add MudBlazor services
 builder.Services.AddMudServices();
 
-// Add services to the container.
+// Add Razor Components and Authentication
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
@@ -24,37 +24,34 @@ builder.Services.AddScoped<IdentityUserAccessor>();
 builder.Services.AddScoped<IdentityRedirectManager>();
 builder.Services.AddScoped<AuthenticationStateProvider, IdentityRevalidatingAuthenticationStateProvider>();
 
-//injecao de dependencia dos contratos e implementacoes
+// Injeção de dependência dos repositórios
 builder.Services.AddScoped<IAgendamentoRepository, AgendamentoRepository>();
 builder.Services.AddScoped<IBarbeiroRepository, BarbeiroRepository>();
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IEspecialidadeRepository, EspecialidadeRepository>();
 
-
-builder.Services.AddAuthentication(options =>
-    {
-        options.DefaultScheme = IdentityConstants.ApplicationScheme;
-        options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
-    })
-    .AddIdentityCookies();
-
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
-builder.Services.AddIdentityCore<ApplicationUser>()
-    .AddRoles<IdentityRole>()
+// Configurar Identity com roles e tokens
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders()
     .AddSignInManager()
-    .AddRoleManager<RoleManager<IdentityRole>>()
-    .AddDefaultTokenProviders();
+    .AddRoleManager<RoleManager<IdentityRole>>();
 
+// Configurar envio de email (mock)
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
+
+// Configurar o banco de dados (PostgreSQL)
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+    ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseNpgsql(connectionString));
+
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Pipeline HTTP
 if (app.Environment.IsDevelopment())
 {
     app.UseMigrationsEndPoint();
@@ -62,20 +59,55 @@ if (app.Environment.IsDevelopment())
 else
 {
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
 
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.UseAntiforgery();
 
-app.MapStaticAssets();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
-// Add additional endpoints required by the Identity /Account Razor components.
+// Mapear rotas padrão do Identity (inclui /Account/AccessDenied)
 app.MapAdditionalIdentityEndpoints();
+
+app.Run();
+
+using (var scope = app.Services.CreateScope())
+{
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+
+    // Criar usuário Valdemar
+    var userValdemar = await userManager.FindByNameAsync("valdemar");
+    if (userValdemar == null)
+    {
+        var novoUser = new ApplicationUser
+        {
+            UserName = "valdemar",
+            Email = "valdemar@teste.com",
+            EmailConfirmed = true
+        };
+        await userManager.CreateAsync(novoUser, "SenhaForte@123");
+    }
+
+    // Criar usuário Daniela
+    var userDaniela = await userManager.FindByNameAsync("daniela");
+    if (userDaniela == null)
+    {
+        var novoUser = new ApplicationUser
+        {
+            UserName = "daniela",
+            Email = "daniela@teste.com",
+            EmailConfirmed = true
+        };
+        await userManager.CreateAsync(novoUser, "SenhaForte@123");
+    }
+}
 
 app.Run();

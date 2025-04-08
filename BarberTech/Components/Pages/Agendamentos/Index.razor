@@ -3,7 +3,11 @@
 
 <PageTitle>Agendamentos</PageTitle>
 
-<MudText Typo="Typo.h3">Agendamentos</MudText>
+
+<MudText Typo="Typo.h3" Color="Color.Info" Align="Align.Center"> 
+    <MudIcon Icon="@Icons.Material.Rounded.CalendarMonth" Color="Color.Info" Size="Size.Large" />
+    <strong>AGENDAMENTOS</strong>
+</MudText>
 
 
 <MudButton Variant="Variant.Filled"
@@ -29,12 +33,12 @@
                 <MudIcon Icon="@Icons.Material.Filled.FaceRetouchingNatural" Color="Color.Info" />
                 <MudText>@agendamento.Cliente.Nome</MudText>
             </MudStack>
-            
-            
+
+
             <MudText Class="mt-4" Typo="Typo.body2">
-                    <MudText><strong>Serviço:</strong> @(agendamento.Descricao ?? "Sem observações...") </MudText>
+                <MudText><strong>Serviço:</strong> @(agendamento.Descricao ?? "Sem observações...") </MudText>
             </MudText>
-                
+
 
             <MudDivider Class="mt-4 mb-4" />
 

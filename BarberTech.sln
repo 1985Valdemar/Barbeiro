@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarberTech", "BarberTech\BarberTech.csproj", "{983FEE52-760A-4AD6-AA3A-D6A05C901F6C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarberTech", "BarberTech\BarberTech.csproj", "{315A9994-1846-477D-86F9-9624FF23574E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{983FEE52-760A-4AD6-AA3A-D6A05C901F6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{983FEE52-760A-4AD6-AA3A-D6A05C901F6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{983FEE52-760A-4AD6-AA3A-D6A05C901F6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{983FEE52-760A-4AD6-AA3A-D6A05C901F6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{315A9994-1846-477D-86F9-9624FF23574E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{315A9994-1846-477D-86F9-9624FF23574E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{315A9994-1846-477D-86F9-9624FF23574E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{315A9994-1846-477D-86F9-9624FF23574E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

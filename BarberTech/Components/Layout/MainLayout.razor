@@ -8,10 +8,13 @@
 <MudSnackbarProvider />
 
 <MudLayout>
-    <MudAppBar Elevation="1" Color="Color.Info" Fixed="false">
+    <MudAppBar Elevation="1" Color="Color.Info" Fixed="true">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Dark" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
-        <MudText Typo="Typo.h6" Class="ml-3">Barbearia DonCorleone</MudText>
+        <MudText Typo="Typo.h6" Class="ml-3" Color="Color.Dark">
+           Barbearia DonCorleone
+        </MudText>
         <MudSpacer />
+
         <MudStack Row>
 
             @if (_isDark)
