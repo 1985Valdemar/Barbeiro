@@ -1,0 +1,47 @@
+﻿@page "/barbeiros"
+@inherits IndexBarbeiroPage
+
+<PageTitle>Profissionais</PageTitle>
+
+<MudText Typo="Typo.h3">Barbeiros </MudText>
+
+<MudButton Variant="Variant.Filled"
+           StartIcon="@Icons.Material.Filled.PersonAddAlt1"
+           Color="Color.Info"
+           Size="Size.Large"
+           Href="/barbeiros/create"
+           Class="mt-md-4 mb-4">
+    Novo Profissional
+</MudButton>
+
+<MudDataGrid Items="@Barbeiros" Filterable="false" SortMode="@SortMode.Single" Groupable="false">
+
+    <Columns>
+        <PropertyColumn Property="x=>x.Nome" />
+        <PropertyColumn Property="x=>x.Documento" />
+        <PropertyColumn Property="x=>x.Telefone" />
+        <PropertyColumn Property="x=>x.Email" />
+        <PropertyColumn Property="x=>x.Especialidade.Nome" Title="Especialidade" />
+        <TemplateColumn CellClass="d-flex justify-center">
+            <CellTemplate>
+                <MudStack Row>
+                    <MudFab Size="Size.Small"
+                            Label="Editar"
+                            hidden="@HideButtons"
+                            @onclick="@(()=> GoToUpdate(context.Item.Id))"
+                            StartIcon="@Icons.Material.Filled.Edit"
+                            Color="Color.Success" />
+
+                    <MudFab Size="Size.Small"
+                            Label="Excluir"
+                            hidden="@HideButtons"
+                            @onclick="@(()=> DaleteBarbeiroAsync(context.Item))"
+                            StartIcon="@Icons.Material.Filled.Delete"
+                            Color="Color.Error" />
+                </MudStack>
+            </CellTemplate>
+
+        </TemplateColumn>
+    </Columns>
+
+</MudDataGrid>

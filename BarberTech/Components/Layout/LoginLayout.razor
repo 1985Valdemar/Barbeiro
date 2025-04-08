@@ -1,0 +1,25 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using MudBlazor
+@inherits LayoutComponentBase
+
+<MudThemeProvider IsDarkMode="true" />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+    <MudAppBar Elevation="1">
+
+        <MudText Typo="Typo.h6" Class="ml-3">BarberTech</MudText>
+        <MudSpacer />
+        <MudStack>
+            <MudIconButton Href="/" Icon="@Icons.Material.Outlined.Home" Color="Color.Inherit" />
+        </MudStack>
+
+    </MudAppBar>
+
+    <MudMainContent Class="mt-16 pa-4">
+        @Body
+    </MudMainContent>
+
+</MudLayout>

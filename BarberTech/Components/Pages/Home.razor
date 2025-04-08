@@ -1,0 +1,154 @@
+﻿@page "/"
+
+<MudContainer>
+    <MudGrid Justify="Justify.Center">
+        <MudItem xs="12" sm="8" md="6" TextAlign="TextAlign.Center">
+            <MudText Align="Align.Center" Typo="Typo.h5">
+                Bem-vindo ao <b>BarberTech</b>!
+            </MudText>
+
+            <MudText Align="Align.Center" Typo="Typo.h6">
+                A solução para gestão de barbearias.
+            </MudText>
+        </MudItem>
+    </MudGrid>
+
+    <MudGrid class="mt-5">
+        <MudItem xs="12" sm="6" md="3">
+            <MudCard>
+                <MudCardContent>
+                    <MudStack Direction="Row" AlignItems="AlignItems.Center" Spacing="1">
+                        <MudIcon Icon="@Icons.Material.Filled.Schedule" Color="Color.Info" Size="Size.Large" />
+                        <MudText Typo="Typo.h6"><b>AGENDAMENTOS</b></MudText>
+                    </MudStack>
+                    Permite agendamentos de forma rápida e eficiente.
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+
+        <MudItem xs="12" sm="6" md="3">
+            <MudCard>
+                <MudCardContent>
+                    <MudStack Direction="Row" AlignItems="AlignItems.Center" Spacing="1">
+                        <MudIcon Icon="@Icons.Material.Filled.People" Color="Color.Info" Size="Size.Large" />
+                        <MudText Typo="Typo.h6"><b>GESTÃO DE CLIENTES</b></MudText>
+                    </MudStack>
+                    Mantenha um banco de dados organizado e completo sobre seus clientes.
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+
+        <MudItem xs="12" sm="6" md="3">
+            <MudCard>
+                <MudCardContent>
+                    <MudStack Direction="Row" AlignItems="AlignItems.Center" Spacing="1">
+                        <MudIcon Icon="@Icons.Material.Filled.Person" Color="Color.Info" Size="Size.Large" />
+                        <MudText Typo="Typo.h6"><b>CONTROLE DE BARBEIROS</b></MudText>
+                    </MudStack>
+                    Gerencie a disponibilidade e os horários dos profissionais.
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+
+        <MudItem xs="12" sm="6" md="3">
+            <MudCard>
+                <MudCardContent>
+                    <MudStack Direction="Row" AlignItems="AlignItems.Center" Spacing="1">
+                        <MudIcon Icon="@Icons.Material.Filled.DataExploration" Color="Color.Info" Size="Size.Large" />
+                        <MudText Typo="Typo.h6"><b>DASHBOARD DE AGENDAMENTOS</b></MudText>
+                    </MudStack>
+                    Observe dados de forma prática, facilitando a análise e monitoramento das informações.
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+    <MudSpacer />
+
+
+
+    <MudExpansionPanels>
+        <br />
+        <MudExpansionPanel>
+            <TitleContent>
+                <div class="d-flex">
+                    <MudIcon Icon="@Icons.Material.Filled.Info" Color="Color.Info" class="mr-5"></MudIcon>
+                    <MudText><strong>Detalhes do projeto </strong></MudText>
+                </div>
+            </TitleContent>
+            <ChildContent>
+
+                <MudText Align="Align.Center" Typo="Typo.h6" GutterBottom="true">
+                    <MudIcon Icon="@Icons.Material.Filled.Construction" Color="Color.Info" Size="Size.Large" />
+                    <strong>Tecnologias Utilizadas</strong>
+
+                </MudText>
+                <MudList T="string">
+                    <MudListItem>🎨 <strong>Frontend:</strong> MudBlazor para interface moderna e responsiva;</MudListItem>
+                    <MudListItem>⚙️ <strong>Backend:</strong> .NET 9.0 para escalabilidade e desempenho;</MudListItem>
+                    <MudListItem>🗄️ <strong>Banco de Dados:</strong> Entity Framework para gerenciamento de dados;</MudListItem>
+                    <MudListItem>🔒 <strong>Autenticação:</strong> JWT para controle de acessos.</MudListItem>
+                </MudList>
+
+                <MudSpacer />
+                <MudDivider DividerType="DividerType.FullWidth" />
+                <MudDivider DividerType="DividerType.FullWidth" />
+                <MudSpacer />
+
+
+
+                <MudGrid class="mt-5" Justify="Justify.Center">
+                    <MudItem xs="12" sm="6" md="3">
+                        <MudCard Class="pa-3">
+                            <MudCardContent>
+                                <MudStack Direction="Row" AlignItems="AlignItems.Center" Spacing="1">
+                                    <MudIcon Icon="@Icons.Material.Outlined.LogoDev" Color="Color.Primary" Size="Size.Large" />
+                                    <MudText Typo="Typo.h6"><b>Desenvolvedor</b></MudText>
+                                    <MudText Align="Align.Left" Typo="Typo.subtitle2">
+                                        Giovani Santos Cardoso
+                                    </MudText>
+                                </MudStack>
+                            </MudCardContent>
+                        </MudCard>
+                    </MudItem>
+
+                    <MudItem xs="12" sm="6" md="3">
+                        <MudCard Class="pa-3">
+                            <MudCardContent>
+                                <MudStack Direction="Row" AlignItems="AlignItems.Center" Spacing="1">
+                                    <MudIcon Icon="@Icons.Custom.Brands.LinkedIn" Color="Color.Info" Size="Size.Large" />
+                                    <MudText Typo="Typo.h6"><b>Linkedin</b></MudText>
+                                    <MudText Align="Align.Left" Typo="Typo.subtitle2">
+                                        <a href="https://www.linkedin.com/in/giovani-santos-cardoso" target="_blank">linkedin.com/giovani-santos-cardoso</a>
+                                    </MudText>
+                                </MudStack>
+                            </MudCardContent>
+                        </MudCard>
+                    </MudItem>
+
+                    <MudItem xs="12" sm="6" md="3">
+                        <MudCard Class="pa-3">
+
+                            <MudCardContent>
+                                <MudStack Direction="Row" AlignItems="AlignItems.Center" Spacing="1">
+                                    <MudIcon Icon="@Icons.Custom.Brands.GitHub" Color="Color.Dark" Size="Size.Large" />
+                                    <MudText Typo="Typo.h6"><b>GitHub</b></MudText>
+                                    <MudText Align="Align.Left" Typo="Typo.subtitle2">
+                                        <a href="https://github.com/Gioos" target="_blank">github.com/Gioos</a>
+                                    </MudText>
+                                </MudStack>
+                            </MudCardContent>
+                        </MudCard>
+                    </MudItem>
+                </MudGrid>
+
+            </ChildContent>
+        </MudExpansionPanel>
+    </MudExpansionPanels>
+
+
+</MudContainer>
+
+
+@code {
+    bool _inline;
+}

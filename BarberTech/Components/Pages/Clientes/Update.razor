@@ -1,0 +1,60 @@
+﻿@page "/clientes/update/{ClienteId:int}"
+@using Microsoft.AspNetCore.Authorization
+@inherits UpdateCliente
+
+@attribute [Authorize(Roles = "Atendente")]
+
+<MudText Typo="Typo.h3">Atualizar Dados do Cliente</MudText>
+
+<MudPaper Class="pa-8 mt-4">
+
+    <EditForm Model="@InputModel" OnValidSubmit="OnValidSubmitAsync">
+        <DataAnnotationsValidator />
+
+        <MudTextField Label="Nome"
+                      Variant="Variant.Outlined"
+                      HelperText="Campo Obrigatório"
+                      @bind-Value="@InputModel.Nome"
+                      For="@(()=>InputModel.Nome)" />
+
+
+        <MudTextField Label="Documento"
+                      Variant="Variant.Outlined"
+                      HelperText="Campo Obrigatório"
+                      @bind-Value="InputModel.Documento"
+                      Mask="@(new PatternMask("000.000.000-00"))"
+                      For="@(()=> InputModel.Documento)" />
+
+        <MudTextField Label="E-mail"
+                      Variant="Variant.Outlined"
+                      HelperText="Campo obrigatório"
+                      @bind-Value="InputModel.Email"
+                      For="@(()=> InputModel.Email)" />
+
+        <MudTextField Label="Telefone"
+                      Variant="Variant.Outlined"
+                      HelperText="Campo obrigatório"
+                      @bind-Value="InputModel.Telefone"
+                      Mask="@(new PatternMask("(00) 0 0000-0000"))"
+                      For="@(()=> InputModel.Telefone)" />
+
+        <MudDatePicker Label="Data de Nascimento"
+                       Editable="false"
+                       @bind-Date="Nascimento"
+                       MaxDate="@MaxDate"
+                       Variant="Variant.Outlined"
+                       Placeholder="Data de Nascimento" />
+
+        <MudDivider Class="m-4" />
+
+        <MudButton Variant="Variant.Filled"
+                   StartIcon="@Icons.Material.Filled.Save"
+                   Color="Color.Info"
+                   Size="Size.Large"
+                   ButtonType="ButtonType.Submit">
+            SALVAR
+        </MudButton>
+
+    </EditForm>
+
+</MudPaper>

@@ -1,0 +1,40 @@
+﻿@page "/clientes"
+@inherits IndexPage
+
+<MudText Typo="Typo.h3">Clientes</MudText>
+
+<MudButton Variant="Variant.Filled"
+           StartIcon="@Icons.Material.Filled.PersonAddAlt"
+           Color="Color.Info"
+           Size="Size.Medium"
+           Href="/clientes/create"
+           Class="mt-md-4 mb-4">Novo Cliente</MudButton>
+
+<MudDataGrid Items="@Clientes" Filterable="false" SortMode="@SortMode.Single" Groupable="false">
+    <Columns>
+        <PropertyColumn Property="x=>x.Nome" />
+        <PropertyColumn Property="x=>x.Documento" />
+        <PropertyColumn Property="x=>x.Email" />
+        <PropertyColumn Property="x=>x.Telefone" />
+        <PropertyColumn Property="x=>x.Nascimento" Format="dd/MM/yyyy" />
+        <TemplateColumn>
+            <CellTemplate>
+                <MudStack Row>
+                    <MudFab Size="Size.Small"
+                            Label="Editar"
+                            hidden="@HideButtons"
+                            @onclick="@(()=> GoToUpdate(context.Item.Id))"
+                            StartIcon="@Icons.Material.Filled.Edit"
+                            Color="Color.Success" />
+
+                    <MudFab Size="Size.Small"
+                            Label="Excluir"
+                            hidden="@HideButtons"
+                            @onclick="@(()=> DeleteCliente(context.Item))"
+                            StartIcon="@Icons.Material.Filled.Delete"
+                            Color="Color.Error" />
+                </MudStack>
+            </CellTemplate>
+        </TemplateColumn>
+    </Columns>
+</MudDataGrid>
